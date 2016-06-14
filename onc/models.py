@@ -1,14 +1,14 @@
 from django.db import models
 
-class authuser(models.model):
-    password = models.charfield(max_length=128)
-    last_login = models.datetimefield()
-    is_superuser = models.booleanfield()
+class Authuser(models.model):
+    password = models.CharField(max_length=128)
+    last_login = models.DateTimeField()
+    is_superuser = models.BooleanField()
     # username = models.charfield(unique=true, max_length=30)
-    first_name = models.charfield(max_length=30)
-    last_name = models.charfield(max_length=30)
-    email = models.charfield(unique=True, max_length=75)
-    is_active = models.booleanfield()
-    date_joined = models.datetimefield()
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    email = models.CharField(unique=True, max_length=75)
+    is_active = models.BooleanField()
+    date_joined = models.DateTimeField()
 
 

@@ -1,6 +1,7 @@
 from django.db import models
+from onc.models import Authuser
 
-class mda(models.model):
-    name = models.charfield(unique=True, max_length=75)
-    user = models.onetoonefield(authuser, models.do_nothing)
-    phone_number = models.charfield(32)
+class Mda(models.Model):
+    name = models.CharField(unique=True, max_length=75)
+    user = models.OneToOneField(Authuser, models.DO_NOTHING())
+    phone_number = models.CharField(32)
