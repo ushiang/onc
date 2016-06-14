@@ -1,0 +1,48 @@
+{% extends request.session.style|add:'/layout/_breadcrumbs.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block toolbar %}
+
+<!-- Toolbar -->
+<div class="navbar navbar-default navbar-xs">
+    <ul class="nav navbar-nav visible-xs-block">
+        <li class="full-width text-center"><a data-toggle="collapse" data-target="#navbar-filter"><i class="icon-menu7"></i></a></li>
+    </ul>
+
+    <div class="navbar-collapse collapse" id="navbar-filter">
+        <ul class="nav navbar-nav element-active-slate-400">
+            <li>
+                <a ui-WitMVC-href href="#/system/users/" >
+                    <i class="fa fa-group">&nbsp; {%  trans "View all users" %}</i>
+                </a>
+            </li>
+            <li>
+                <a ui-WitMVC-href href="#/system/privilege/module/" >
+                    <i class="fa fa-plus"></i>&nbsp; {% trans "View Modules" %}
+                </a>
+            </li>
+            <li>
+                <a ui-WitMVC-href href="#/system/privilege/module/new/" >
+                    <i class="fa fa-plus"></i>&nbsp; {% trans "Add a Module" %}
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    {% trans "Other Settings" %} <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#/system/privilege/manifest/">{% trans "Privilege Manifest" %}</a></li>
+                    <li><a href="#/system/privilege/manifest/new/">{% trans "Add to Privilege Manifest" %}</a></li>
+                    <li><a href="#/system/privilege/new/">{% trans "Configure User Classes" %}</a></li>
+                    <li><a href="#/system/privilege/user_class/new/">{% trans "Define a User Class" %}</a></li>
+                    <li><a href="#/system/privilege/uc_user/new/">{% trans "Assign Privileges" %}</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /toolbar -->
+
+{% endblock %}

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+{% load i18n %}
+
+<html>
+
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <title>PostPrincipal ERP Ontogeny</title>
+    <meta name="keywords" content="PostPrincipal ERP" />
+    <meta name="description" content="PostPrincipal ERP - Nigeria's number 1 ERP solution for small and medium scale businesses">
+    <meta name="author" content="Data Miners Consult Limited">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font CSS (Via CDN) --
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,300">-->
+
+    <!-- Required Plugin CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/assets/js/utility/highlight/styles/googlecode.css">
+
+    <!-- Required Plugin CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/plugins/datepicker/css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="/static/vendor/plugins/daterange/daterangepicker.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/assets/skin/default_skin/css/theme.css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/plugins/magnific/magnific-popup.css">
+
+    <!-- Admin Panel & Forms CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/assets/admin-tools/admin-plugins/admin-panels/adminpanels.css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/admin-tools/admin-forms/css/admin-forms.css">
+
+    <!-- Admin Forms Modal CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/assets/admin-tools/admin-plugins/admin-modal/adminmodal.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/assets/img/favicon.ico">
+
+    <!-- Plugins -->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/plugins/datatables/media/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/js/utility/highlight/styles/googlecode.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/vendor/chosen/chosen.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/css/helpers.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/custom.css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Define some session variables -->
+    <script>
+        var _ADDR_ ='{{page.host}}';
+        var _CONTENT_ ='CONTENT_LINK';
+        var SESSION = new Object();
+        var S = new Object();
+        SESSION.init = true;
+        SESSION.draw = 0;
+        SESSION.datatable = null;
+        SESSION.datatable_url = "";
+        SESSION.referrer = "";
+
+        SESSION.error_header = "{% trans 'Something(s) went south!' %}";
+        SESSION.success_header = "{% trans 'Success'%}";
+        SESSION.information_header = "{% trans 'Information'%}";
+        SESSION.warning_header = "{% trans 'Warning'%}";
+
+        // INTERVALS
+        SESSION.interval_leave = null;
+        SESSION.interval_misc = null;
+        SESSION.interval_notification = null;
+
+     </script>
+    <!-- End definations -->
+</head>
+
+<body class="sb-l-o sb-r-c onload-check">
+
+    <!-- Start: Main -->
+    <div id="main">
+
+    {% include 'layout/_top.html' %}
+
+        {% include 'layout/_sidebar.html' %}
+
+        <!-- Start: Content -->
+        <section id="content_wrapper">
+
+            <div id='' class="animated" ui-WitMVC-mainView>
+
+            </div>
+
+            <!-- Admin Form Modal -->
+            <div ui-WitMVC-popContent id="modal-pp" class="popup-basic popup-lg admin-form mfp-with-anim mfp-hide">
+            </div>
+
+            <!-- Loading -->
+            <div class="label label-system light label-sm ph10 animated pp-loading">
+                <strong>Loading...</strong>
+            </div>
+
+        </section>
+
+        {% include 'layout/_sidebar-alt.html' %}
+    </div>
+    <div id="root-plop"></div>
+    <!-- End #Main -->
+
+    <!-- Google Map API --
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="/static/vendor/jquery/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/static/vendor/jquery/jquery_ui/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="/static/assets/js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Page Plugins via CDN --
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/globalize/0.1.1/globalize.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.js"></script>-->
+
+    <!-- Angular JS -->
+    <script type="text/javascript" src="/static/vendor/angularjs/angular.min.js"></script>
+    <script type="text/javascript" src="/static/vendor/angularjs/angular.resource.js"></script>
+    <script type="text/javascript" src="/static/vendor/angularjs/angular.cookies.js"></script>
+    <script type="text/javascript" src="/static/vendor/angularjs/angular.sanitize.js"></script>
+    <script type="text/javascript" src="/static/vendor/angularjs/angular.autocomplete.js"></script>
+    <script type="text/javascript" src="/static/vendor/angularjs/angular.upload.min.js"></script>
+
+    <!-- via local files-->
+    <!--<script type="text/javascript" src="/static/vendor/plugins/globalize/src/core.js"></script>-->
+    <script type="text/javascript" src="/static/vendor/plugins/moment/moment.min.js"></script>
+
+    <!-- Page Plugins -->
+    <script type="text/javascript" src="/static/vendor/plugins/daterange/daterangepicker.js"></script>
+    <script type="text/javascript" src="/static/vendor/plugins/datepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="/static/vendor/plugins/jquerymask/jquery.maskedinput.min.js"></script>
+
+    <!-- Charts JS -->
+    <script type="text/javascript" src="/static/vendor/plugins/highcharts/highcharts.js"></script>
+
+    <!-- Datatable -->
+    <script type="text/javascript" src="/static/vendor/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/static/vendor/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+    <script type="text/javascript" src="/static/vendor/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+    <script type="text/javascript" src="/static/js/custom/datatableview.min.js"></script>
+
+    <!-- Select Plugins -->
+    <link href="/static/vendor/plugins/select2/src/sass_output/core.css" rel="stylesheet" />
+    <!--<link href="/static/vendor/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />-->
+    <script src="/static/vendor/plugins/select2/dist/js/select2.min.js"></script>
+    <script src="/static/js/vendor/chosen/chosen.jquery.min.js"></script>
+
+    <script type="text/javascript" src="/static/js/custom/noelement.js"></script>
+
+    <!-- Autocomplete Plugins -->
+    <link rel="stylesheet" type="text/css" href="/static/css/autocomplete.css">
+    <script type="text/javascript" src="/static/js/custom/autocomplete.js"></script>
+
+    <!-- Admin Panels  -->
+    <script type="text/javascript" src="/static/assets/admin-tools/admin-plugins/admin-panels/json2.js"></script>
+    <script type="text/javascript" src="/static/assets/admin-tools/admin-plugins/admin-panels/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="/static/assets/admin-tools/admin-plugins/admin-panels/adminpanels.js"></script>
+
+    <!-- Admin Panels Modals -->
+    <script type="text/javascript" src="/static/vendor/plugins/magnific/jquery.magnific-popup.js"></script>
+
+    <!-- Theme Javascript -->
+    <script type="text/javascript" src="/static/assets/js/utility/utility.js"></script>
+    <script type="text/javascript" src="/static/assets/js/main.js"></script>
+    <script type="text/javascript" src="/static/assets/js/demo.js"></script>
+    <script type="text/javascript" src="/static/assets/js/pages/widgets.js"></script>
+
+    <!-- Wit MVC -->
+    <script type="text/javascript" src="/static/js/WitMVC/ui.js"></script>
+    <script type="text/javascript" src="/static/js/WitMVC/router.js"></script>
+    <script type="text/javascript" src="/static/js/WitMVC/form.js"></script>
+    <script type="text/javascript" src="/static/js/WitMVC/lib.js"></script>
+    <script type="text/javascript" src="/static/js/WitMVC/plugins.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+
+            "use strict";
+
+            // Init Theme Core
+            Core.init({
+                sbm: "sb-l-c",
+            });
+
+            // Init Demo JS
+            //Demo.init();
+
+
+            // Position "loading..." placeholder
+            var progress = function(method){
+                var doc_w = $(document).width();
+                var obj_w = $('.pp-loading').width();
+                var left = (parseInt(doc_w)-parseInt(obj_w))/2;
+                $('.pp-loading').css({top:-2, left:left});
+            }
+
+            progress('display');
+
+            // initialize notifications with Angular JS
+            var app = angular.module('pp.system.top', ["ngResource", "ngSanitize", "angucomplete-alt"]);
+            app.config(function($httpProvider, $resourceProvider, $interpolateProvider) {
+                $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+                $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+                $resourceProvider.defaults.stripTrailingSlashes = false;
+                $interpolateProvider.startSymbol('<%');
+                $interpolateProvider.endSymbol('%>');
+            });
+            app.filter("sanitize", function($sce) {
+                return function(htmlCode){
+                    return $sce.trustAsHtml(htmlCode);
+                }
+            });
+            app.controller('NotificationController', function ($http, $scope) {
+                $scope.load = function() {
+                    $http.get('/hr/rest/notifications/{{ page.profile.pk }}/', {}).success(function (data) {
+                        // NOTIFICATIONS
+                        $scope.notifications = data.result[0].notifications;
+                        $scope.notification_count = data.result[0].notification_count;
+
+                        if ($scope.notification_count == 0){
+                            $scope.notification_count = "";
+                        }
+                    });
+                };
+                $scope.load();
+
+                $scope.disperse_notification = function(link){
+                    link = link.replace(/\//g, "%fs%").replace(/\?/g, "%qm%").replace(/=/g, "%et%");
+                    $http.get("/system/notification-disperse/" + link + "/", {}).success(function (data) {
+                        $scope.load();
+                    });
+                };
+
+                // EVENT LISTENERS
+                /* remove for production
+                SESSION.interval_notification = setInterval( function() {
+                    //$scope.load();
+                }, 5000);
+                */
+
+            });
+            angular.bootstrap($("[ng-system-top]"), ['pp.system.top']);
+        });
+    </script>
+</body>
+
+</html>

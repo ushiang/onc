@@ -1,0 +1,16 @@
+{% extends request.session.style|add:'/_base.html' %}
+
+{% block title %}{{page.title}}{% endblock %}
+
+{% block content %}
+
+{% include page.menu %}
+
+<div id='content'>
+
+  {% include request.session.style|add:'/layout/snippets/datatable.html' %}
+
+
+</div>
+
+{% endblock %}

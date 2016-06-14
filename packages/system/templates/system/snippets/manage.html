@@ -1,0 +1,18 @@
+{% extends request.session.style|add:'/_base.html' %}
+
+{% block title %}{{page.title}}{% endblock %}
+
+{% block content %}
+
+{% include request.session.style|add:'/layout/_breadcrumbs.html' %}
+
+<div id="content">
+
+	{% include 'system/admin_menu.html' %}
+
+	{% include request.session.style|add:'/layout/snippets/errors.html' %}
+
+	{% include request.session.style|add:'/layout/snippets/form.html' %}
+</div>
+
+{% endblock %}

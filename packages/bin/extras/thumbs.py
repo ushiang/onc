@@ -3,9 +3,10 @@
 django-thumbs by Antonio Melé
 http://django.es
 """
+import traceback
 from django.db.models import ImageField
 from django.db.models.fields.files import ImageFieldFile
-from PIL import Image
+from PIL import Image, ExifTags
 from django.core.files.base import ContentFile
 import cStringIO
 
@@ -25,7 +26,27 @@ def generate_thumb(img, thumb_size, format):
     
     img.seek(0) # see http://code.djangoproject.com/ticket/8222 for details
     image = Image.open(img)
-    
+
+    # TWEAK - Try to Correct Orientation Problems with PIL Images
+    try:
+        for key in ExifTags.TAGS.keys():
+            if ExifTags.TAGS[key] == 'Orientation':
+                exif = dict(image._getexif().items())
+
+                if exif[key] == 3:
+                    image = image.rotate(180, expand=True)
+                elif exif[key] == 6:
+                    image = image.rotate(270, expand=True)
+                elif exif[key] == 8:
+                    image = image.rotate(90, expand=True)
+
+                break
+
+        image.save(img)
+
+    except:
+        traceback.print_exc()
+
     # Convert to RGB if necessary
     if image.mode not in ('L', 'RGB'):
         image = image.convert('RGB')
@@ -73,10 +94,12 @@ class ImageWithThumbsFieldFile(ImageFieldFile):
                 if not self:
                     return ''
                 else:
-                    print self.url
-                    split = self.url.rsplit('.',1)
-                    thumb_url = '%s.%sx%s.%s' % (split[0],w,h,split[1])
-                    return thumb_url
+                    try:
+                        split = self.url.rsplit('.',1)
+                        thumb_url = '%s.%sx%s.%s' % (split[0],w,h,split[1])
+                        return thumb_url
+                    except IndexError:
+                        return None
                     
             for size in self.sizes:
                 (w,h) = size

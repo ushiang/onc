@@ -1,0 +1,38 @@
+{% extends request.session.style|add:'/layout/_breadcrumbs.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block toolbar %}
+
+<!-- Toolbar -->
+<div class="navbar navbar-default navbar-xs">
+    <ul class="nav navbar-nav visible-xs-block">
+        <li class="full-width text-center"><a data-toggle="collapse" data-target="#navbar-filter"><i class="icon-menu7"></i></a></li>
+    </ul>
+
+    <div class="navbar-collapse collapse" id="navbar-filter">
+        <ul class="nav navbar-nav element-active-danger-400">
+
+            <li>
+                <a type="button" href="#/hr/personnel/">
+                    <span class="fa fa-users"></span> &nbsp; {% trans "Personnel List" %}
+                </a>
+            </li>
+            <li>
+                <a ui-WitMVC-href href="#/hr/exit/admin/">
+                    <span class="fa fa-sign-out"></span> &nbsp; {% trans "View Exit Applications" %}
+                </a>
+            </li>
+            <li>
+                <a ui-WitMVC-href href="#/hr/exit/bin/">
+                    <span class="fa fa-sign-out"></span> &nbsp; {% trans "View Exited Staff" %}
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<!-- /toolbar -->
+
+{% endblock %}

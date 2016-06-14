@@ -1,0 +1,19 @@
+{% extends 'gem/_base.html' %}
+
+{% block title %}{{page.title}}{% endblock %}
+
+{% block content %}
+
+{% include 'gem/layout/_breadcrumbs.html' %}
+
+<div id='content'>
+
+    {% if page.user == 'root' %}
+        {% include 'system/admin_menu.html' %}
+    {% endif %}
+
+  {% include 'gem/layout/snippets/table.html' %}
+
+</div>
+
+{% endblock %}

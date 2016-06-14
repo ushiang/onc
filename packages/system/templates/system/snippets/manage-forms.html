@@ -1,0 +1,11 @@
+{% extends 'system/snippets/wrapper.html' %}
+
+{% block title %}{{page.title}}{% endblock %}
+
+{% block childbody %}
+
+    {% include request.session.style|add:'layout/snippets/errors.html' %}
+
+    {% include request.session.style|add:'layout/snippets/forms.html' %}
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends '_error.html' %}
+
+{% load i18n %}
+
+{% block title %}{{page.title}}{% endblock %}
+
+{% block content %}
+
+<!-- Begin: Content -->
+<section id="content" class="pn">
+
+    <div class="center-block mt50 mw800">
+        <h1 class="error-title"> 403! </h1>
+        <h2 class="error-subtitle">{% trans 'No permission to access that page' %}</h2>
+    </div>
+    <div class="mid-section">
+        <div class="mid-content clearfix">
+            <div class="pull-left">
+                <img src="/static/img/logo/logo.268_58.png" class="img-responsive mt20 w225" alt="logo">
+            </div>
+            <div class="pull-right mt20">
+                <a href="#" title="facebook link"><i class="fa fa-facebook-square fs40 text-primary mr15"></i>
+                </a>
+                <a href="#" title="twitter link"><i class="fa fa-twitter-square fs40 text-info mr15"></i>
+                </a>
+                <a href="#" title="google plus link"><i class="fa fa-google-plus-square fs40 text-danger-light mr15"></i>
+                </a>
+                <a href="mailto:mail@postprincipal.com" title="email link"><i class="fa fa-envelope-square fs40 text-warning"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <a href="{% if page.route_to %}/#{{page.route_to}}{% else %}/{% endif %}" id="return-arrow">
+        <i class="fa fa-arrow-left fa-3x text-primary"></i>
+        <span> {% trans 'Return <br> to App' %} </span>
+    </a>
+
+</section>
+<!-- End: Content -->
+
+{% endblock %}

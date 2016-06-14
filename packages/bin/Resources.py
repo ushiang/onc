@@ -1,7 +1,18 @@
+from django.utils.translation import gettext as _
+
 SEX = (
-        ('Male', 'Male'),
-        ('Female', 'Female'),
-    )
+        ('', _("Select Sex")),
+        ('Male', _('Male')),
+        ('Female', _('Female')),
+)
+
+FLAGS = (
+    ('', _('Select a Flag')),
+    ('2', _('Pending')),
+    ('1', _('Progress')),
+    ('3', _('Cancelled')),
+    ('0', _('Closed')),
+)
 
 RELATIONSHIPS = (
     ('Husband', 'Husband'),
@@ -27,22 +38,26 @@ RELATIONSHIPS = (
 )
 
 CURRENCY = (
-    ('NGN', 'NGN'),
-    ('USD', 'USD'),
-    ('GBP', 'GBP'),
-    ('EUR', 'EUR'),
-    ('YEN', 'YEN'),
+    ('', _("Select a Currency")),
+    ('NGN', _('NGN')),
+    ('USD', _('USD')),
+    ('GBP', _('GBP')),
+    ('EUR', _('EUR')),
+    ('YEN', _('YEN')),
 )
 
 EDUCATION_CATEGORIES = (
     ('Primary', 'Primary'),
     ('Secondary', 'Secondary'),
+    ('College', 'College'),
+    ('Polytechnic', 'Polytechnic'),
+    ('University', 'University'),
     ('Tertiary', 'Tertiary'),
     ('Others', 'Others'),
 )
 
 STATE_NG = (
-    ('',''),
+    ('', ''),
     ('Abia', 'Abia'),
     ('Adamawa', 'Adamawa'),
     ('Akwa Ibom', 'Akwa Ibom'),
@@ -57,7 +72,7 @@ STATE_NG = (
     ('Edo', 'Edo'),
     ('Ekiti', 'Ekiti'),
     ('Enugu', 'Enugu'),
-    ('F.C.T (Abuja)', 'F.C.T (Abuja)'),
+    ('FCT', 'F.C.T (Abuja)'),
     ('Gombe', 'Gombe'),
     ('Imo', 'Imo'),
     ('Jigawa', 'Jigawa'),
@@ -80,10 +95,11 @@ STATE_NG = (
     ('Taraba', 'Taraba'),
     ('Yobe', 'Yobe'),
     ('Zamfara', 'Zamfara'),
+    ('Other', 'Other'),
 )
 
 COUNTRIES = (
-    ('',''),
+    ('', _("Select a Country")),
     ('Afghanistan', 'Afghanistan'),
     ('Akrotiri', 'Akrotiri'),
     ('Albania', 'Albania'),

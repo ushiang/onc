@@ -1,0 +1,73 @@
+{% extends request.session.style|add:'/_base.html' %}
+
+{% block title %}{{page.title}}{% endblock %}
+
+{% block content %}
+
+{% include request.session.style|add:'/layout/_breadcrumbs.html' %}
+
+<div id='content'>
+
+  {% include 'system/admin_menu.html' %}
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel invoice-panel">
+            <div class="panel-heading panel-visible"> <span class="panel-title"> <span class="fa fa-th-list"></span> {{page.title}} {{page.status|safe}}</span>
+              <div class="panel-header-menu pull-right mr10">
+                <a href="#task/update/{{instance.id}}/" class="btn btn-xs btn-default btn-gradient mr5"> <i class="fa fa-pencil"></i> Edit Task</a>
+                <a href="#task/" class="btn btn-xs btn-default btn-gradient mr5"> <i class="fa fa-plus-square pr5"></i> View All Task</a>
+                <a href="javascript:window.print()" class="btn btn-xs btn-default btn-gradient mr5"> <i class="fa fa-print fs13"></i> </a>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-xs btn-default btn-gradient dropdown-toggle" data-toggle="dropdown"><span class="glyphicons glyphicons-cogwheel"></span> Update Task Status</button>
+                  <ul class="dropdown-menu checkbox-persist pull-right text-left" role="menu">
+                    <li><a ui-WitMVC-href href="#task/status/new/{{instance.id}}/"><i class="imoon imoon-unlocked"></i> &NoBreak; Add Log </a></li>
+                    <li><a ui-WitMVC-href href="#task/status/{{instance.id}}/"><i class="glyphicons glyphicons-table"></i> &NoBreak; View Logs </a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body pn" id="invoice-item">
+              <div class="col-md-12 va-m p30">
+                <div class="row mb30">
+                  <div class="col-md-12">
+                    <div class="pull-left">
+                      <h1 class="text-info"> {{instance.name|safe}}</h1>
+                      <h4><strong>Status:</strong> {{instance.s_status|safe}}<br/></h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" id="invoice-info">
+                    <div class="col-md-4">
+                    <div class="panel panel-alt">
+                      <div class="panel-heading"> <span class="panel-title"> <i class="fa fa-th-list"></i> Task Details:</span>
+                        <div class="panel-btns pull-right ml10"> <a href="#task/update/{{instance.id}}/" class="btn btn-xs btn-default btn-gradient"><i class="fa fa-pencil"></i> Edit Task</a></div>
+                      </div>
+                      <div class="panel-body">
+                        <address>
+                        <strong>Issue/Ticket:</strong><h5><i> {{instance.issue.name|safe}}</i></h5><br>
+                        <strong>Originator:</strong> {{instance.s_originator|safe}}<br>
+                        <strong>Primary Recipient:</strong> {{instance.s_primary_recipient|safe}}<br/>
+                        {% if instance.s_recipients %}<strong>Recipients:</strong> {{instance.s_recipients|safe}}<br>{% endif %}
+                        <strong>Status:</strong> {{instance.s_status|safe}}<br/>
+                        </address>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" id="invoice-table">
+                  <div class="col-md-12">
+                    {% block childbody %}
+
+                    {% endblock %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+
+{% endblock %}

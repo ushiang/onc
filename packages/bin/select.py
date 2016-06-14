@@ -1,4 +1,5 @@
 import json, urllib
+from django.utils.datastructures import MultiValueDictKeyError
 
 from packages.bin.auth import Auth
 
@@ -10,22 +11,23 @@ from django import forms
 # HR - ORGANIZATION - OFFICE
 #===============================================================================
 
-def SelectOffice(request, qs=None):
+def SelectOffice(request, dept=None, office=None):
 
-    s = Auth().isAuth(request)
+    s = Auth().is_auth(request)
     if not s:
         return Auth.routeLogin
 
     from packages.hr.hr_organization.models import Office
-    
-    qs = "" if qs is None else urllib.unquote(qs)
+
+    dept_id = 0 if dept is None else urllib.unquote(dept)
+    office_id = 0 if office is None else urllib.unquote(office)
     
     #---------->>> Create Form
     class FormSelectOffice(forms.Form):
-        office = forms.ModelChoiceField(queryset=Office.objects.filter(department__pk=qs))
-        office.widget.attrs.update({'class':'form-control pp-chosen'})
+        office = forms.ModelChoiceField(queryset=Office.pp.filter(department__pk=dept_id))
+        office.widget.attrs.update({'class': 'form-control pp-chosen'})
     
-    form = FormSelectOffice()
+    form = FormSelectOffice(initial={'office': office_id })
     
     return HttpResponse(form)
 
@@ -36,7 +38,7 @@ def SelectOffice(request, qs=None):
 
 def SelectSubCategory(request, qs=None, pk=None):
 
-    s = Auth().isAuth(request)
+    s = Auth().is_auth(request)
     if not s:
         return Auth.routeLogin
 
@@ -45,10 +47,10 @@ def SelectSubCategory(request, qs=None, pk=None):
     qs = "" if qs is None else urllib.unquote(qs)
 
     class FormSelectSubCategory(forms.Form):
-        sub_category = forms.ModelChoiceField(queryset=SubCategory.objects.filter(category__pk=qs))
+        sub_category = forms.ModelChoiceField(queryset=SubCategory.pp.filter(category__pk=qs))
         sub_category.widget.attrs.update({'class':'form-control pp-chosen'})
 
-    form = FormSelectSubCategory(initial = {'sub_category': pk })
+    form = FormSelectSubCategory(initial={'sub_category': pk })
 
     return HttpResponse(form)
 
@@ -59,7 +61,7 @@ def SelectSubCategory(request, qs=None, pk=None):
 
 def SelectUoM(request, qs=None):
 
-    s = Auth().isAuth(request)
+    s = Auth().is_auth(request)
     if not s:
         return Auth.routeLogin
 
@@ -68,7 +70,7 @@ def SelectUoM(request, qs=None):
     qs = "" if qs is None else urllib.unquote(qs)
 
     class FormSelectUoM(forms.Form):
-        uom = forms.ModelChoiceField(queryset=UoM.objects.filter(item__id=qs))
+        uom = forms.ModelChoiceField(queryset=UoM.pp.filter(item__id=qs))
         uom.widget.attrs.update({'class':'form-control pp-chosen'})
 
     return HttpResponse(FormSelectUoM())
@@ -80,7 +82,7 @@ def SelectUoM(request, qs=None):
 
 def SelectVendor(request, qs=None):
 
-    s = Auth().isAuth(request)
+    s = Auth().is_auth(request)
     if not s:
         return Auth.routeLogin
 
@@ -89,7 +91,7 @@ def SelectVendor(request, qs=None):
     qs = "" if qs is None else urllib.unquote(qs)
 
     class FormSelectVendor(forms.Form):
-        vendor = forms.ModelChoiceField(queryset=Item.objects.filter(id=qs)[0].vendor.all())
+        vendor = forms.ModelChoiceField(queryset=Item.pp.filter(id=qs)[0].vendor.all())
         vendor.widget.attrs.update({'class':'form-control pp-chosen'})
 
     return HttpResponse(FormSelectVendor())

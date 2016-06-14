@@ -1,0 +1,41 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-25 23:47+0100\n"
+"PO-Revision-Date: 2015-02-23 04:02+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.7.4\n"
+
+#: packages/system/views.py:72
+msgid ""
+"Your account isn't active yet or is suspended. Please contact your system "
+"administrator"
+msgstr ""
+"Votre compte a expiré, veuillez contacter votre administrateur système."
+
+#: packages/system/views.py:76
+msgid "The license you are tied too has no active subscription"
+msgstr "La licence que vous êtes attaché trop n'a aucun abonnement actif"
+
+#: packages/system/views.py:80
+msgid ""
+"The license tied to this account has expired. Please contact your system "
+"administrator"
+msgstr ""
+"Votre compte a expiré, veuillez contacter votre administrateur système."
+
+#: packages/system/views.py:119
+msgid "Username and Password Mismatch"
+msgstr "Nom d'utilisateur et d'incompatibilité de mot de passe"

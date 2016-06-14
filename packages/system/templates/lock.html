@@ -1,0 +1,71 @@
+{% extends request.session.style|add:'/_login.html' %}
+
+{% load i18n %}
+
+{% block title %}Login | PostPrincipal{% endblock %}
+
+{% block content %}
+
+        <!-- Unlock user -->
+        <form method="post" action="{{page.form.action}}" id="unlock-form">
+            {% csrf_token %}
+            <div class="panel login-form">
+                <div class="thumb thumb-rounded">
+                    <img src="{{page.obj.profile.get_image_url}}" alt="">
+                    <div class="caption-overflow">
+                        <span>
+                            <a href="#" class="btn border-white text-white btn-flat btn-icon btn-rounded btn-xs"><i class="icon-collaboration"></i></a>
+                            <a href="#" class="btn border-white text-white btn-flat btn-icon btn-rounded btn-xs ml-5"><i class="icon-question7"></i></a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <h6 class="content-group text-center text-semibold no-margin-top">{{page.obj.profile.get_fullname}} <small class="display-block">Unlock your account</small></h6>
+
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control" value="{{page.obj.profile.email}}" readonly>
+                        <div class="form-control-feedback">
+                            <i class="icon-user-lock text-muted"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" placeholder="Your password" name="password" id="id_password">
+                        <div class="form-control-feedback">
+                            <i class="icon-user-lock text-muted"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group login-options">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" class="styled" checked>
+                                    Remember
+                                </label>
+                            </div>
+
+                            <div class="col-sm-6 text-right">
+                                <a href="/system/users/forgot-password/">Forgot password?</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if formError %}
+                    <div class="alert alert-danger no-border">
+                        <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                        {{ formError }}
+                    </div>
+                    {% endif %}
+
+                    <button type="submit" class="btn btn-primary btn-block">Unlock <i class="icon-arrow-right14 position-right"></i></button>
+                    <a href="/system/users/logout-session/" class="btn btn-primary btn-block" title="">
+                        {% blocktrans with myvar=page.obj.profile.get_fullname %}Not {{myvar}}?{% endblocktrans %}
+                    </a>
+                </div>
+            </div>
+        </form>
+        <!-- /unlock user -->
+  
+{% endblock %}

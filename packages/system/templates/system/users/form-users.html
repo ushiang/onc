@@ -1,0 +1,81 @@
+{% load i18n %}
+{% load i18n %}
+<!-- Profile info -->
+<div class="content">
+    <!-- User profile -->
+    <div class="row">
+        <div class="col-lg-12 mw600">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{% trans "Manage Users" %}</h3>
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+                            <li><a data-action="reload"></a></li>
+                            <li><a data-action="close"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <form ui-WitMVC-Form name="{{page.form_name}}" action="{{page.form_action}}" method="post" role="form"
+                      enctype="multipart/form-data">
+                    <div class="panel-body">
+                        {% csrf_token %}
+
+                        <legend>{% trans "User Information" %}</legend>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label><span class="text-semibold">{{form.email.label}}</span></label>
+                                    {{form.email}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label><span class="text-semibold">{{form.profile.label}}</span></label>
+                                    {{form.profile}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label><span class="text-semibold">{{form.usertype.label}}</span></label>
+                                    {{form.usertype}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label><span class="text-semibold">{{form.firstname.label}}</span></label>
+                                    {{form.firstname}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label><span class="text-semibold">{{form.lastname.label}}</span></label>
+                                    {{form.lastname}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button ui-WitMVC-Submit type="submit" class="btn bg-danger-800 btn-labeled mv20">
+                            <b><i class="fa fa-arrow-right"></i></b><strong>{% trans "Save User" %}</strong>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!-- /profile info -->
+        </div>
+    </div>
+</div>

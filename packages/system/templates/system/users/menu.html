@@ -1,72 +1,41 @@
-{% block hmenu %}
+{% extends request.session.style|add:'/layout/_breadcrumbs.html' %}
 
-<div class="row">
-	<div class="col-md-12">
-		<div class="btn-group">
-    		<a type="button" href="/hr/personnel/" class="btn bg-light5 bg-gradient btn-sm">
-    			<span class="fa fa-home"></span> 
-    		</a>
-    		<a type="button" href="/hr/organization/admin/" class="btn bg-light5 bg-gradient btn-sm">
-    			<span class="fa fa-list-alt"></span> View All
-    		</a>
+{% load static %}
+{% load i18n %}
 
-            <!-- DEPARTMENT -->
-            <div class="btn-group">
-              <a type="button" href="javascript::void()" class="btn bg-light5 bg-gradient btn-sm dropdown-toggle" data-toggle="dropdown">
-                 <span class="caret"></span> Department
-              </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="/hr/organization/settings/department/">View All Department</a></li>
-                    <li><a href="/hr/organization/settings/department/new/">Add Department</a></li>
-                </ul>
-            </div>
+{% block toolbar %}
 
-            <!-- OFFICE -->
-            <div class="btn-group">
-              <a type="button" href="javascript::void()" class="btn bg-light5 bg-gradient btn-sm dropdown-toggle" data-toggle="dropdown">
-                 <span class="caret"></span> Office
-              </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="/hr/organization/settings/office/">View All Offices</a></li>
-                    <li><a href="/hr/organization/settings/office/new/">Add Office</a></li>
-                </ul>
-            </div>
+<!-- Toolbar -->
+<div class="navbar navbar-default navbar-xs">
+    <ul class="nav navbar-nav visible-xs-block">
+        <li class="full-width text-center"><a data-toggle="collapse" data-target="#navbar-filter"><i class="icon-menu7"></i></a></li>
+    </ul>
 
-            <!-- GRADE -->
-            <div class="btn-group">
-              <a type="button" href="javascript::void()" class="btn bg-light5 bg-gradient btn-sm dropdown-toggle" data-toggle="dropdown">
-                 <span class="caret"></span> Grade
-              </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="/hr/organization/settings/grade/">View All Grades</a></li>
-                    <li><a href="/hr/organization/settings/grade/new/">Add Grade</a></li>
-                </ul>
-            </div>
-
-            <!-- STEP -->
-            <div class="btn-group">
-              <a type="button" href="javascript::void()" class="btn bg-light5 bg-gradient btn-sm dropdown-toggle" data-toggle="dropdown">
-                 <span class="caret"></span> Step
-              </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="/hr/organization/settings/step/">View All Steps</a></li>
-                    <li><a href="/hr/organization/settings/step/new/">Add Step</a></li>
-                </ul>
-            </div>
-
-            <!-- LOCATION -->
-            <div class="btn-group">
-    		  <a type="button" href="javascript::void()" class="btn bg-light5 bg-gradient btn-sm dropdown-toggle" data-toggle="dropdown">
-    			 <span class="caret"></span> Location
-    		  </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="/hr/organization/settings/location/">View All Location</a></li>
-                    <li><a href="/hr/organization/settings/location/new/">Add Location</a></li>
-                </ul>
-            </div>
-    	</div>
+    <div class="navbar-collapse collapse" id="navbar-filter">
+        <ul class="nav navbar-nav element-active-slate-400">
+            <li>
+                <a ui-WitMVC-href href="#/system/users/" >
+                    <i class="fa fa-group">&nbsp; {%  trans "View all users" %}</i>
+                </a>
+            </li>
+            <li>
+                <a ui-WitMVC-href href="#/system/users/new/" >
+                    <i class="fa fa-plus"></i>&nbsp; {% trans "Add user" %}
+                </a>
+            </li>
+            <li>
+                <a ui-WitMVC-href href="#/system/privilege/module/" >
+                    <i class="fa fa-pencil"></i>&nbsp; {% trans "Manage privileges" %}
+                </a>
+            </li>
+            <li>
+                <a ui-WitMVC-href href="#/system/users/reset-all-password/" class="text-danger-700" >
+                    <i class="fa fa-refresh"></i>&nbsp; {% trans "Reset all password" %}
+                </a>
+            </li>
+        </ul>
     </div>
-    <div class="col-md-12">&nbsp;</div>
 </div>
+<!-- /toolbar -->
 
 {% endblock %}

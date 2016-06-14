@@ -1,48 +1,73 @@
-{% extends '_login.html' %}
+{% extends request.session.style|add:'/_login.html' %}
+
+{% load i18n %}
 
 {% block title %}Login | PostPrincipal{% endblock %}
 
-{% block formLogin %}
-  
-  <!-- Start: Main -->
-<div id="main">
-  <div id="content">
-    <div class="row">
-      <div id="page-logo"> <img src="/static/img/logo/logo-white2.png" class="img-responsive" alt="logo"> </div>
-    </div>
-    <form name='form-login' id='form-login' method='post' action='{{form.action}}' >
-    {% csrf_token %}
-    <div class="row">
-      <div class="panel-bg">
-        <div class="panel">
-          <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-lock text-purple2"></span> Login </span>
-          </div>
-          <div class="panel-body">
-            <div class="login-avatar"> <img src="/static/img/avatars/no-image.jpg" width="120" height="120" alt=""> </div>
-            {% if formError %}
-              <div class="alert alert-warning">{{formError}}</div>
-            {% endif %}
-            <div class="form-group">
-              <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span> </span>
-                {{ form.username }}
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-link"></span> </span>
-                {{ form.password }}
-              </div>
-            </div>
-          </div>
-          <div class="panel-footer"> <span class="text-muted fs12 lh30"><a> Forgotten Password?</a></span> 
-            <button type='submit' class="btn btn-sm bg-purple2 pull-right"><i class="fa fa-home"></i> Login</button>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </form>
-  </div>
-</div>
-<!-- End: Main -->
+{% block content %}
+
+            <!-- Advanced login -->
+            <form method="post" action="{{page.form.action}}" id="login-form">
+                {% csrf_token %}
+                <div class="panel panel-body login-form">
+                    <div class="text-center">
+                        <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
+                        <h5 class="content-group">Login to your account <small class="display-block">Your credentials</small></h5>
+                    </div>
+
+                    <div class="form-group has-feedback has-feedback-left">
+                        <input type="text" class="form-control" placeholder="Email" id="email" name="email">
+                        <div class="form-control-feedback">
+                            <i class="icon-user text-muted"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback has-feedback-left">
+                        <input type="password" class="form-control" placeholder="Password" id="password" name="password">
+                        <div class="form-control-feedback">
+                            <i class="icon-lock2 text-muted"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group login-options">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" class="styled" checked="checked">
+                                    Remember
+                                </label>
+                            </div>
+
+                            <div class="col-sm-6 text-right">
+                                <a href="/system/users/forgot-password/">Forgot password?</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if formError %}
+                    <div class="alert alert-danger no-border">
+                        <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                        {{ formError }}
+                    </div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <button type="submit" class="btn bg-blue btn-block">Login <i class="icon-arrow-right14 position-right"></i></button>
+                    </div>
+
+                    <!--<div class="content-divider text-muted form-group"><span>or sign in with</span></div>
+                    <ul class="list-inline form-group list-inline-condensed text-center">
+                        <li><a href="#" class="btn border-indigo text-indigo btn-flat btn-icon btn-rounded"><i class="icon-facebook"></i></a></li>
+                        <li><a href="#" class="btn border-pink-300 text-pink-300 btn-flat btn-icon btn-rounded"><i class="icon-dribbble3"></i></a></li>
+                        <li><a href="#" class="btn border-slate-600 text-slate-600 btn-flat btn-icon btn-rounded"><i class="icon-github"></i></a></li>
+                        <li><a href="#" class="btn border-info text-info btn-flat btn-icon btn-rounded"><i class="icon-twitter"></i></a></li>
+                    </ul>-->
+
+                    <div class="content-divider text-muted form-group"><span>Don't have an account?</span></div>
+                    <a href="/blog/how-to-register/" class="btn btn-default btn-block content-group">Sign up</a>
+                    <span class="help-block text-center no-margin">By continuing, you're confirming that you've read our <a href="#">Terms &amp; Conditions</a> and <a href="#">Cookie Policy</a></span>
+                </div>
+            </form>
+            <!-- /advanced login -->
   
 {% endblock %}

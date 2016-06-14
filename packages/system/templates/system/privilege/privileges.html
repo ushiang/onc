@@ -1,0 +1,26 @@
+{% extends request.session.style|add:'/_base.html' %}
+{% load i18n %}
+
+{% block title %}{{page.title}}{% endblock %}
+
+{% block content %}
+
+{% include 'system/privilege/menu.html' %}
+
+<div id='content'>
+
+    <div class="row">
+        <h1>{% trans "YOUR PRIVILEGES" %}</h1>
+    </div>
+
+    <div class="row">
+        <div class="well well-sm col-md-4 col-sm-8 col-xs-12">
+        {% for x in request.session.privilege %}
+            <span class="text text-dark">{{x|safe}}</span><br/>
+        {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends request.session.style|add:'/_base.html' %}
+
+{% block title %}{{page.title}}{% endblock %}
+
+{% block content %}
+
+{% include page.base_template|add:page.second_base|add:"menu.html" %}
+
+<div id='content'>
+
+  {% include page.base_template|add:page.second_base|add:page.view %}
+
+</div>
+
+{% endblock %}
