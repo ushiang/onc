@@ -1,0 +1,140 @@
+/* Example tokeninput style #2: wit style */
+ul.token-input-list-wit {
+    overflow: hidden;
+    width: 100%;
+    border: 1px solid #dbe1e8;
+    cursor: text;
+    font-size: 12px;
+    min-height: 1px;
+    z-index: 12;
+    position: relative;
+    margin: 0;
+    padding: 1px;
+	background-color: #f9fafc;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    list-style-type: none;
+    clear: left;
+    -webkit-appearance: none;
+}
+
+ul.token-input-list-wit:focus{
+    border-color: #1bbae1;
+}
+
+ul.token-input-list-wit:focus{
+    z-index: 1024;
+}
+
+ul.token-input-list-wit li input {
+    border: 0px;
+    width: auto;
+    padding: 6px 8px;
+    margin: 2px 0;
+    color: #394263;
+    background-color: #f9fafc;
+    -webkit-appearance: caret;
+}
+
+li.token-input-token-wit {
+    overflow: hidden; 
+    height: auto !important; 
+    height: 15px;
+    width:auto;
+    margin: 3px;
+    padding: 1px 3px;
+    background-color: #eee;
+    color: #333;
+    cursor: default;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    float: left;
+    white-space: nowrap;
+}
+
+li.token-input-token-wit img{
+    margin:2px;
+    padding:2px;
+    height: 13px;
+    border: 1px solid #555;
+}
+
+li.token-input-token-wit p {
+    font-size: 14px;
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+li.token-input-token-wit span {
+    color: #555;
+    margin-left: 5px;
+    font-size:14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+li.token-input-selected-token-wit {
+    font-size:14px;
+    background-color: #5670a6;
+    border: 1px solid #3b5998;
+    color: #FDFDFD;
+}
+
+li.token-input-input-token-wit {
+    float: left;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+div.token-input-dropdown-wit {
+    position: absolute;
+    width: 240px;
+    background-color: #FDFDFD;
+    overflow: hidden;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    cursor: default;
+    font-size: 12px;
+    z-index: 12;
+}
+
+div.token-input-dropdown-wit p {
+    margin: 0;
+    padding: 5px;
+    font-size: 13px;
+    font-weight: normal;
+    color: #777;
+}
+
+div.token-input-dropdown-wit ul {
+    margin: 0;
+    padding: 0;
+}
+
+div.token-input-dropdown-wit ul li {
+    background-color: #FDFDFD;
+    padding: 3px;
+    margin: 0;
+    list-style-type: none;
+}
+
+div.token-input-dropdown-wit ul li.token-input-dropdown-item-wit {
+    background-color: #FDFDFD;
+}
+
+div.token-input-dropdown-wit ul li.token-input-dropdown-item2-wit {
+    background-color: #FDFDFD;
+}
+
+div.token-input-dropdown-wit ul li em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+div.token-input-dropdown-wit ul li.token-input-selected-dropdown-item-wit {
+    background-color: #3b5998;
+    color: #FDFDFD;
+}

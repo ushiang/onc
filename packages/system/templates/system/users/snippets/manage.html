@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+
+{% block title %}{{page.title}}{% endblock %}
+
+{% block content %}
+
+{% include 'layout/_breadcrumbs.html' %}
+
+<div id="content">
+
+	{% include 'system/users/admin_menu.html' %}
+
+	{% include 'layout/snippets/errors.html' %}
+
+	{% include 'layout/snippets/form.html' %}
+</div>
+
+{% endblock %}

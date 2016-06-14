@@ -1,0 +1,48 @@
+{% extends '_login.html' %}
+
+{% block title %}Login | PostPrincipal{% endblock %}
+
+{% block formLogin %}
+  
+  <!-- Start: Main -->
+<div id="main">
+  <div id="content">
+    <div class="row">
+      <div id="page-logo"> <img src="/static/img/logo/logo-white2.png" class="img-responsive" alt="logo"> </div>
+    </div>
+    <form name='form-login' id='form-login' method='post' action='{{form.action}}' >
+    {% csrf_token %}
+    <div class="row">
+      <div class="panel-bg">
+        <div class="panel">
+          <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-lock text-purple2"></span> Login </span>
+          </div>
+          <div class="panel-body">
+            <div class="login-avatar"> <img src="/static/img/avatars/no-image.jpg" width="120" height="120" alt=""> </div>
+            {% if formError %}
+              <div class="alert alert-warning">{{formError}}</div>
+            {% endif %}
+            <div class="form-group">
+              <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span> </span>
+                {{ form.username }}
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-link"></span> </span>
+                {{ form.password }}
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer"> <span class="text-muted fs12 lh30"><a> Forgotten Password?</a></span> 
+            <button type='submit' class="btn btn-sm bg-purple2 pull-right"><i class="fa fa-home"></i> Login</button>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+<!-- End: Main -->
+  
+{% endblock %}
